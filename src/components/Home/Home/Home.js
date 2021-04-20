@@ -6,7 +6,7 @@ import Contact from '../Contact/Contact';
 import Reviews from '../Reviews/Reviews';
 import Footer from '../../Shared/Footer/Footer';
 import LatestWork from '../LatestWork/LatestWork';
-import Blogs from '../Blogs/Blogs';
+import Photographers from '../Photographers/Photographers';
 
 const Home = () => {
     return (
@@ -14,7 +14,7 @@ const Home = () => {
             <Header></Header>
             <LatestWork></LatestWork>
             <Packages></Packages>
-            <Blogs></Blogs>
+            <Photographers></Photographers>
             <Reviews></Reviews>
             <Contact></Contact>
             <Footer></Footer>

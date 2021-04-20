@@ -9,9 +9,9 @@ const Packages = () => {
         .then(data => setPackages(data))
     }, [])
     return (
-        <section>
-            <h1 className="text-center text-brand my-5">OUR PACKAGES & SERVICES</h1>
-            <div className="row">
+        <section className='w-100'>
+            <h1 className=" text-center text-brand my-5">OUR PACKAGES & SERVICES</h1>
+            <div style={{marginRight:'0px'}} className="row">
                 {
                     packages.map(packagee => <Package packagee={packagee}  ></Package>)
                 }

@@ -1,7 +1,7 @@
 import React from 'react';
-import BlogPost from '../BlogPost/BlogPost';
-// import wilson from '../../../images/wilson.png';
-import './Blogs.css'
+import Photographer from '../Photographer/Photographer';
+
+import './photographers.css'
 import karim from '../../../images/PG1.jpg'
 import rahim from '../../../images/PG2.jpg'
 import fahim from '../../../images/PG3.jpg'
@@ -25,16 +25,16 @@ const PGData = [
     },
 ]
 
-const Blogs = () => {
+const Photographers = () => {
     return (
-       <section className=" my-5">
+       <section className="my-5">
            <div className="container">
                <div className="section-header text-center">
                     <h1 className="text-primary">Our Professional Photographer</h1>
                </div>
                <div className="row my-4 py-4">
                     {
-                        PGData.map(pg => <BlogPost pg={pg}/>)
+                        PGData.map(pg => <Photographer pg={pg}/>)
                     }
                </div>
            </div>
@@ -42,4 +42,4 @@ const Blogs = () => {
     );
 };
 
-export default Blogs;
+export default Photographers;
