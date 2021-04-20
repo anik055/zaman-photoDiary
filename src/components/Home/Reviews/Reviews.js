@@ -20,7 +20,6 @@ const Reviews = () => {
                     {
                      reviews.map(review =><Review key={review._id} review={review} />)
                     }
-                    
                 </div>
             </div>
         </section>

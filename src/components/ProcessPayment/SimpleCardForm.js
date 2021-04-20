@@ -6,6 +6,7 @@ const SimpleCardForm = ({handlePayment}) => {
   const stripe = useStripe();
   const elements = useElements();
   const [product, setProduct] = useState([]);
+  const {price, name} = product;
 
   const [paymentError,setPaymentError] = useState('');
   const [paymentSuccess,setPaymentSuccess] = useState('');
@@ -51,7 +52,7 @@ const SimpleCardForm = ({handlePayment}) => {
         <form style={{margin:'10px auto', padding:'10px'}} className='w-50' onSubmit={handleSubmit}>
           <CardElement />
           <br/>
-          <h6 className='text-warning'>NB: You are going to pay ${product.price} for buying {product.name} package</h6>
+          <h6 className='text-warning'>NB: You are going to pay ${price} for buying {name} package</h6>
           <button className="btn btn-primary my-4" type="submit" disabled={!stripe}>Pay Now</button>
           {
             paymentError && <p>{paymentError}</p>

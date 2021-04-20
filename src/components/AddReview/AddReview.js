@@ -11,15 +11,10 @@ const AddReview = () => {
         setInfo(newInfo);
     }
 
-    // const handleFileChange = (e) => {
-    //     const newFile = e.target.files[0];
-    //     setFile(newFile);
-    // }
-
     const handleSubmit = () => {
         const formData = new FormData()
         console.log(info.description);
-        // formData.append('file', file);
+
         formData.append('name', info.name);
         formData.append('description', info.description);
         formData.append('location', info.location);
@@ -56,10 +51,6 @@ const AddReview = () => {
                         <label htmlFor="exampleInputPassword1">Event Location</label>
                         <input onBlur={handleBlur} type="text" className="form-control" name="location" placeholder="Your Event Location" />
                     </div>
-                    {/* <div className="form-group">
-                        <label htmlFor="exampleInputPassword1">Upload Your best Moment</label>
-                        <input onChange={handleFileChange} type="file" className="form-control" id="exampleInputPassword1" placeholder="Upload Your Best Moment" />
-                    </div> */}
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </div>

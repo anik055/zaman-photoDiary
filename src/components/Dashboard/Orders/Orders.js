@@ -56,9 +56,11 @@ const Orders = ({ orders }) => {
           <th className="text-secondary" scope="col">
             Status
           </th>
-          {isAdmin && <th className="text-secondary" scope="col">
-            Change Status
-          </th>}
+          {isAdmin && (
+            <th className="text-secondary" scope="col">
+              Change Status
+            </th>
+          )}
         </tr>
       </thead>
       <tbody>
@@ -70,22 +72,24 @@ const Orders = ({ orders }) => {
             <td>{order.product.name}</td>
             <td>${order.product.price}</td>
             <td>{status || order.status}</td>
-            {isAdmin && <td>
-              <div className="col-4">
-                <select
-                  onChange={(event) => handleBlur(event, order._id)}
-                  className="form-control"
-                  name="gender"
-                >
-                  <option disabled={true} value="Not set">
-                    Select Gender
-                  </option>
-                  <option value="pending">pending</option>
-                  <option value="Processing">processing</option>
-                  <option value="Done">done</option>
-                </select>
-              </div>
-            </td>}
+            {isAdmin && (
+              <td>
+                <div className="col-4">
+                  <select
+                    onChange={(event) => handleBlur(event, order._id)}
+                    className="form-control"
+                    name="gender"
+                  >
+                    <option disabled={true} value="Not set">
+                      Select Gender
+                    </option>
+                    <option value="pending">pending</option>
+                    <option value="Processing">processing</option>
+                    <option value="Done">done</option>
+                  </select>
+                </div>
+              </td>
+            )}
           </tr>
         ))}
       </tbody>

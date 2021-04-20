@@ -52,14 +52,17 @@ const Checkout = () => {
 
   return (
     <div style={{ margin: "10px auto", padding: "10px" }}>
-        <h1>Your Shipping details</h1>
+      <h1>Your Shipping details</h1>
       <form
-        style={{ display: shippingData ? "none" : "block",margin: "10px auto" }}
+        style={{
+          display: shippingData ? "none" : "block",
+          margin: "10px auto",
+        }}
         className="p-5 w-50 card"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-group">
-            <label htmlFor="">Your name</label>
+          <label htmlFor="">Your name</label>
           <input
             type="text"
             ref={register({ required: true })}
@@ -72,7 +75,7 @@ const Checkout = () => {
           )}
         </div>
         <div className="form-group">
-        <label htmlFor="">Your phone number</label>
+          <label htmlFor="">Your phone number</label>
           <input
             type="text"
             ref={register({ required: true })}
@@ -86,7 +89,7 @@ const Checkout = () => {
         </div>
 
         <div className="form-group">
-        <label htmlFor="">Your email</label>
+          <label htmlFor="">Your email</label>
           <input
             type="text"
             ref={register({ required: true })}
@@ -110,16 +113,18 @@ const Checkout = () => {
             <span className="text-danger">This field is required</span>
           )}
         </div>
-        
-        <input className='btn btn-primary' type="submit" />
+
+        <input className="btn btn-primary" type="submit" />
       </form>
       <div
-        style={{ display: shippingData ? "block" : "none",margin: "10px auto" }}
+        style={{
+          display: shippingData ? "block" : "none",
+          margin: "10px auto",
+        }}
         className="col-md-6 card"
       >
         <ProcessPayment handlePayment={handlePaymentSuccess}></ProcessPayment>
       </div>
-
     </div>
   );
 };
