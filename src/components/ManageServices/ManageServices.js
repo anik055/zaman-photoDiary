@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-
+import Sidebar from '../Dashboard/Sidebar/Sidebar';
 import ManageService from '../ManageService/ManageService';
+import './manageServices.css'
 
 
 const ManageServices = () => {
@@ -8,31 +9,34 @@ const ManageServices = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/packages')
+        fetch('https://hidden-mesa-38104.herokuapp.com/packages')
         .then(res => res.json())
-        .then(data => setProducts(data))
+        .then(data => {
+            console.log(data);
+            setProducts(data)})
     }, [])
 
     return (
-        <div className="ro">
-        <table>
+        <section className="container row">
+            <Sidebar></Sidebar>
+            <div className="col-md-10 col-sm-6 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+                <h5 className="text-brand">Manage your services</h5>
+                <table className="table">
             <thead>
-            <tr>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Action</th>
+            <tr >
+                <th scope='col'>Name</th>
+                <th scope='col'>Price</th>
+                <th scope='col'>Action</th>
             </tr>
             </thead>
-            </table>
-            <hr/>
-            <table>
-
             {
                 products.map(product =><ManageService product={product}></ManageService>)
             }
             </table>
-        </div>
+                
+            </div>
+        </section>
+        
     );
 };
 

@@ -4,35 +4,9 @@
 .blogs .card-header{
     border: 0;
     background-color: transparent;
-
-
 }
 
-
-
-.blogs .card:hover{
-    background-image: linear-gradient(75deg, #19D3AE,#0fcfec);
-    color: #fff !important;
-    transition:  .1s  all ease-in-out !important;
-}
-.blogs .card:hover .card-body{
-    /* background-image: url(../../../images/quote.png); */
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-size: 60%;
-}
-.blogs .card:hover h6,
-.blogs .card:hover p
-{
-    color: #fff !important;
-
-}
-.blogs .card:hover img{
-    display: none;
-}
-
-.blogs{
-    background-image: url("../../../images/blogss.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.PG-img{
+    border-radius: 50% 50%;
+    width: 300px;
 }

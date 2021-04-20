@@ -1,0 +1,12 @@
+h4,h5{
+    font-weight: 300;
+}
+.tt{
+    background-color:black;
+    z-index: 1;
+}
+
+.logo{
+    left: 40px;
+
+}

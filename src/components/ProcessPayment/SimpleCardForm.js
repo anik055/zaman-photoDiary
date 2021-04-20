@@ -1,30 +1,25 @@
 import {CardElement, useStripe, useElements} from '@stripe/react-stripe-js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 const SimpleCardForm = ({handlePayment}) => {
   const stripe = useStripe();
   const elements = useElements();
+  const [product, setProduct] = useState([]);
 
   const [paymentError,setPaymentError] = useState('');
   const [paymentSuccess,setPaymentSuccess] = useState('');
 
   const handleSubmit = async (event) => {
-    // Block native form submission.
+
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
+
       return;
     }
 
-    // Get a reference to a mounted CardElement. Elements knows how
-    // to find your CardElement because there can only ever be one of
-    // each type of element.
     const cardElement = elements.getElement(CardElement);
-
-    // Use your card Element with other Stripe.js APIs
     const {error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
       card: cardElement,
@@ -42,20 +37,30 @@ const SimpleCardForm = ({handlePayment}) => {
     }
   };
 
+  useEffect(() => {
+    fetch("https://hidden-mesa-38104.herokuapp.com/newOrder")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data[0]);
+        setProduct(data[0]);
+      });
+  }, []);
+
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-      <CardElement />
-      <button type="submit" disabled={!stripe}>
-        Pay
-      </button>
-    </form>
-    {
-        paymentError && <p>{paymentError}</p>
-    }
-    {
-        paymentSuccess && <p>your payment was successful</p>
-    }
+        <form style={{margin:'10px auto', padding:'10px'}} className='w-50' onSubmit={handleSubmit}>
+          <CardElement />
+          <br/>
+          <h6 className='text-warning'>NB: You are going to pay ${product.price} for buying {product.name} package</h6>
+          <button className="btn btn-primary my-4" type="submit" disabled={!stripe}>Pay Now</button>
+          {
+            paymentError && <p>{paymentError}</p>
+        }
+        {
+            paymentSuccess && <p>your payment was successful</p>
+        }
+        </form>
+        
     </div>
 
   );

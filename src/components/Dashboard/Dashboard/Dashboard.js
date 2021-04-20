@@ -1,26 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import AppointmentsByDate from '../AppointmentsByDate/AppointmentsByDate';
-import Sidebar from '../Sidebar/Sidebar';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
 import { UserContext } from '../../../App';
-
-const containerStyle = {
-    backgroundColor: "#F4FDFB",
-    border: '1px solid red'
-}
+import Orders from '../Orders/Orders';
+import Sidebar from '../../Dashboard/Sidebar/Sidebar';
 
 const Dashboard = () => {
+    const [allOrders, setAllOrders] = useState([]);
+    const [userOrders, setUserOrders] = useState([]);
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-    const [selectedDate, setSelectedDate] = useState(new Date());
-    const [appointments, setAppointments] = useState([]);
     const [isAdmin, setIsAdmin] = useState(false);
 
-    const handleDateChange = date => {
-        setSelectedDate(date);
-    }
     useEffect(() => {
-        fetch('http://localhost:5000/isAdmin', {
+        fetch('https://hidden-mesa-38104.herokuapp.com/isAdmin', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: loggedInUser.email })
@@ -30,34 +20,36 @@ const Dashboard = () => {
                 console.log(data);
                 setIsAdmin(data)});
     }, [])
-
+    
     useEffect(() => {
-        fetch('http://localhost:5000/appointmentsByDate', {
+        console.log(loggedInUser.email);
+        fetch('https://hidden-mesa-38104.herokuapp.com/ordersByUser', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ date: selectedDate, email: loggedInUser.email })
+            body: JSON.stringify({email: loggedInUser.email })
         })
             .then(res => res.json())
-            .then(data => setAppointments(data))
-    }, [selectedDate])
+            .then(data => {
+                console.log(data);
+                setUserOrders(data)})
+    }, [])
+
+    useEffect(() => {
+        fetch('https://hidden-mesa-38104.herokuapp.com/orders')
+            .then(res => res.json())
+            .then(data => setAllOrders(data))
+    }, [])
+
+    
 
     return (
-        <section>
-            <div style={containerStyle} className="row">
-                <div className="col-md-2 col-sm-6 col-12">
-                    <Sidebar></Sidebar>
-                </div>
-                <div className="col-md-5 col-sm-12 col-12 d-flex justify-content-center">
-                    <Calendar
-                        onChange={handleDateChange}
-                        value={new Date()}
-                    />
-                </div>
-                <div className="col-md-5 col-sm-12 col-12">
-                    <AppointmentsByDate appointments={appointments}></AppointmentsByDate>
-                </div>
+        <div className="container-fluid row" >
+            <Sidebar></Sidebar>
+            <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
+                <h5 className="text-brand">All Orders</h5>
+                {isAdmin ? <Orders orders={allOrders} /> : <Orders orders = {userOrders} /> }
             </div>
-        </section>
+        </div>
     );
 };
 

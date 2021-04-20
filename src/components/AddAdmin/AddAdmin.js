@@ -15,7 +15,7 @@ const AddAdmin = () => {
         formData.append('email', info.email);
         console.log(info);
         
-        fetch('http://localhost:5000/addAdmin', {
+        fetch('https://hidden-mesa-38104.herokuapp.com/addAdmin', {
             method: 'POST',
             body: formData
         })
@@ -34,7 +34,7 @@ const AddAdmin = () => {
         <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
             <label htmlFor="exampleInputEmail1">Add Admin</label>
             <input onBlur={handleBlur}  type="text" className="form-control" name="email" placeholder="Enter email" />
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary my-3">Submit</button>
         </div>
         </form>
         </section>

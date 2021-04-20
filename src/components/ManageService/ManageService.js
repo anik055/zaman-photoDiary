@@ -8,26 +8,22 @@ const ManageService = (product) => {
         event.target.parentNode.parentNode.style.display = 'none';
           console.log(event.target.parentNode.parentNode.parentNode);
 
-          fetch(`http://localhost:5000/delete/${id}`, {
+          fetch(`https://hidden-mesa-38104.herokuapp.com/delete/${id}`, {
               method: 'DELETE'
           })
           .then(res => res.json())
           .then(data => {
               if(data){
                   console.log(document.getElementById("item"));
-                //   document.getElementById("item").style.display = "none";
-                //   document.getElementById("item")
-                //   event.target.parentNode.parentNode.parentNode.style.display = 'none';
               }
               })
       }
     return (
-       <tbody style={{display:'block'}}>
-          <tr id="item">
-            <td>{name}</td>
-            <td>{price}</td>
-            <td>1</td>
-            <td><button onClick={(event)=>deleteProduct(event,_id)}>Delete</button></td>
+       <tbody >
+          <tr >
+            <td scope='col'>{name}</td>
+            <td scope='col'>{price}</td>
+            <td scope='col'><button onClick={(event)=>deleteProduct(event,_id)}>Delete</button></td>
         </tr>
        </tbody>
     );

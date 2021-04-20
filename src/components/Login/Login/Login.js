@@ -4,7 +4,8 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../../App';
 import { useHistory, useLocation } from 'react-router-dom';
-import LoginBg from '../../../images/loginBg.png';
+import Navbar from '../../Shared/Navbar/Navbar';
+// import LoginBg from '../../../images/loginBg.png';
 
 const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -41,7 +42,8 @@ const Login = () => {
 
   return (
     <div className="login-page container">
-      <div className="row align-items-center" style={{ height: "100vh" }}>
+      <Navbar></Navbar>
+      <div className="row align-items-center" style={{ height: "100vh",margin:'0px auto' }}>
         <div className="col-md-6 shadow p-5">
           <div className="form-group">
             <label htmlFor="">User Name</label>
@@ -59,7 +61,7 @@ const Login = () => {
           </div>
         </div>
         <div className="col-md-6 d-none d-md-block align-self-end">
-          <img className="img-fluid" src={LoginBg} alt="" />
+          {/* <img className="img-fluid" src={LoginBg} alt="" /> */}
         </div>
       </div>
     </div>

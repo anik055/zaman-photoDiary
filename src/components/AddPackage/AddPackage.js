@@ -25,7 +25,7 @@ const AddPackage = () => {
         formData.append('price', info.price);
         console.log(formData);
 
-        fetch('http://localhost:5000/addAPackage', {
+        fetch('https://hidden-mesa-38104.herokuapp.com/addAPackage', {
             method: 'POST',
             body: formData
         })
@@ -39,7 +39,7 @@ const AddPackage = () => {
     }
 
     return (
-        <section className="container-fluid row">
+        <section className="container row">
             <Sidebar></Sidebar>
             <div className="col-md-10 p-4 pr-5" style={{ position: "absolute", right: 0, backgroundColor: "#F4FDFB" }}>
                 <h5 className="text-brand">Add a package</h5>

@@ -1,37 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './navbar.css'
 
 const Navbar = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
-
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
-                        <Link className="nav-link mr-5" to="/">Home</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link mr-5" to="/login">Login</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link mr-5" to="/dashboard">Dashboard</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link mr-5 text-white" to="/dashboard">Admin</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link mr-5 text-white" to="#">Blogs</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link mr-5 text-white" to="#">Contact Us</Link>
-                    </li>
-                </ul>
+            <div>
+            <div className=" tt header text-primary" >
+            <div className="">
+            <div style={{height:'50px',padding:'0% 6%' , margin:'0px auto'}} className="headNav bg-dark fixed-top d-flex bd-highlight">
+            <div className="p-1 deco flex-grow-1 bd-highlight"><Link className="text-white text-decoration-none logo" to="/"><h4>PHOTODIARY</h4></Link></div>
+            <div className="p-2 bd-highlight"><Link className="text-white text-decoration-none" to="/"><h5>Home</h5></Link></div>
+            <div className="p-2 bd-highlight"><Link className="text-white text-decoration-none" to="/dashboard"><h5>Dashboard</h5></Link></div>
+            <div className="p-2 bd-highlight"><Link className="text-white text-decoration-none" to="/dashboard"><h5>Admin</h5></Link></div>
+            <div className="p-2 bd-highlight"><Link className="text-white text-decoration-none" to="/login"><h5>Login</h5> </Link></div>
             </div>
-        </nav>
+            </div>
+        </div>
+       </div>
     );
 };
 
