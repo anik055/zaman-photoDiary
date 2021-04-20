@@ -20,7 +20,7 @@ const ManageService = (product) => {
     <tbody>
       <tr>
         <td scope="col">{name}</td>
-        <td scope="col">{price}</td>
+        <td scope="col">${price}</td>
         <td scope="col">
           <button onClick={(event) => deleteProduct(event, _id)}>Delete</button>
         </td>
