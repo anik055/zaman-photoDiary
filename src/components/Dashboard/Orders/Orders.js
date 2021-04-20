@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../App";
 
 const Orders = ({ orders }) => {
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("pending");
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const [isAdmin, setIsAdmin] = useState(false);
   console.log(loggedInUser);
@@ -21,6 +21,8 @@ const Orders = ({ orders }) => {
   }, []);
 
   const handleBlur = (event, id) => {
+    event.target.parentNode.parentNode.previousElementSibling.innerHTML= event.target.value;
+    console.log(event.target.parentNode.parentNode.previousElementSibling);
     setStatus(event.target.value);
     console.log(id);
     const statuss = {
@@ -71,7 +73,7 @@ const Orders = ({ orders }) => {
             <td>{order.email}</td>
             <td>{order.product.name}</td>
             <td>${order.product.price}</td>
-            <td>{status || order.status}</td>
+            <td>{order.status}</td>
             {isAdmin && (
               <td>
                 <div className="col-4">
@@ -80,7 +82,7 @@ const Orders = ({ orders }) => {
                     className="form-control"
                     name="gender"
                   >
-                    <option disabled={true} value="Not set">
+                    <option disabled={true} value="pending">
                       Select Gender
                     </option>
                     <option value="pending">pending</option>
