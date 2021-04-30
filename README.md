@@ -36,4 +36,4 @@ open [Zaman Photodiary](https://zaman-photodiary.web.app/) in browser.
 ## server-site
 we have used Heroku to deploy our server site. in addition we have used mongoDB as our database.
 server site link [PHOTODIARY](https://hidden-mesa-38104.herokuapp.com/)
-server site code repo: [Github repo] (https://github.com/anik055/photoDiary-server)
+server site code repo [Github repo] (https://github.com/anik055/photoDiary-server/)
