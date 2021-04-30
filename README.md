@@ -1,4 +1,4 @@
-# Bajar Shodai web app
+# Zaman Photodiary web app
 
 A photography service web app that offers a wide range of packages of wedding, birthday, concert photography and so on.
 
